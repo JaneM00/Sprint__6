@@ -1,27 +1,46 @@
 # locators/locators.py
 
-# Локаторы для главной страницы
-MAIN_PAGE_LOCATORS = {
-    "faq_questions": {
-        "question1": ("ID", "question1_id"),
-        "question2": ("ID", "question2_id"),
-    },
-    "faq_answers": {
-        "question1": ("ID", "question1_answer"),
-        "question2": ("ID", "question2_answer"),
-    },
-    "order_button_top": ("CLASS_NAME", "Button_Button__ra12g"),
-    "order_button_bottom": ("CLASS_NAME", "Button_Button__ra12g"),
-    "logo_scooter": ("CLASS_NAME", "Header_Logo__fYF0X"),
-    "logo_yandex": ("CSS_SELECTOR", 'a[href="https://dzen.ru/"]'),
-}
+from selenium.webdriver.common.by import By
 
-# Локаторы для страницы заказа
-ORDER_PAGE_LOCATORS = {
-    "first_name": ("NAME", "name"),
-    "second_name": ("NAME", "surname"),
-    "address": ("NAME", "address"),
-    "phone": ("NAME", "phone"),
-    "submit_button": ("CSS_SELECTOR", 'button[type="submit"]'),
-    "success_message": ("CLASS_NAME", "Order_Modal__YZ-d3"),
-}
+class MainPageLocators:
+    # Локаторы для FAQ
+    FAQ_QUESTION = {
+        "question1": (By.CSS_SELECTOR, "[data-question='question1']"),
+        "question2": (By.CSS_SELECTOR, "[data-question='question2']"),
+        "question3": (By.CSS_SELECTOR, "[data-question='question3']"),
+        "question4": (By.CSS_SELECTOR, "[data-question='question4']"),
+        "question5": (By.CSS_SELECTOR, "[data-question='question5']"),
+        "question6": (By.CSS_SELECTOR, "[data-question='question6']"),
+        "question7": (By.CSS_SELECTOR, "[data-question='question7']"),
+        "question8": (By.CSS_SELECTOR, "[data-question='question8']")
+    }
+    FAQ_ANSWER = {
+        "question1": (By.CSS_SELECTOR, "[data-answer='question1']"),
+        "question2": (By.CSS_SELECTOR, "[data-answer='question2']"),
+        "question3": (By.CSS_SELECTOR, "[data-answer='question3']"),
+        "question4": (By.CSS_SELECTOR, "[data-answer='question4']"),
+        "question5": (By.CSS_SELECTOR, "[data-answer='question5']"),
+        "question6": (By.CSS_SELECTOR, "[data-answer='question6']"),
+        "question7": (By.CSS_SELECTOR, "[data-answer='question7']"),
+        "question8": (By.CSS_SELECTOR, "[data-answer='question8']")
+    }
+    # Локатор для логотипа
+    LOGO = (By.CSS_SELECTOR, ".header-logo")  # замените на актуальный селектор
+
+class OrderPageLocators:
+    # Локаторы для формы заказа
+    NAME_INPUT = (By.NAME, "name")
+    SURNAME_INPUT = (By.NAME, "surname")
+    ADDRESS_INPUT = (By.NAME, "address")
+    PHONE_INPUT = (By.NAME, "phone")
+    SUBMIT_BUTTON = (By.XPATH, "//button[contains(text(), 'Заказать')]")  # или другой актуальный селектор
+
+class MainPageHeaderLocators:
+    # Локатор для кнопки заказа сверху
+    ORDER_TOP_BUTTON = (By.CSS_SELECTOR, ".Order_Button_Top")  # замените на актуальный селектор
+    # Локатор для кнопки заказа снизу
+    ORDER_BOTTOM_BUTTON = (By.CSS_SELECTOR, ".Order_Button_Bottom")  # замените на актуальный селектор
+
+class ConfirmationLocators:
+    # Локатор для сообщения об успешном заказе
+    SUCCESS_MESSAGE = (By.CSS_SELECTOR, ".Order_Modal__Title")  # замените на актуальный селектор
