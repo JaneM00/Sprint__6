@@ -1,19 +1,38 @@
+# tests/test_faq.py
 import pytest
 from pages.main_page import MainPage
 
-@pytest.mark.parametrize("question_key", ["question1", "question2"])
+@pytest.mark.parametrize("question_key", [
+    "question1",
+    "question2",
+    "question3",
+    "question4",
+    "question5",
+    "question6",
+    "question7",
+    "question8"
+])
 def test_faq_answer_display(driver, question_key):
     page = MainPage(driver)
     page.open()
     
-    # Нажать на стрелочку вопроса и проверить ответ
     page.click_faq_question(question_key)
     
     answer_text = page.get_faq_answer_text(question_key)
     
     expected_texts = {
-        "question1": "Ответ на вопрос 1",
-        "question2": "Ответ на вопрос 2",
+        "question1": "Сутки — 400 рублей. Оплата курьеру — наличными или картой.",
+        "question2": ("Пока что у нас так: один заказ — один самокат. "
+                        "Если хотите покататься с друзьями, можете просто сделать несколько заказов — один за другим."),
+        "question3": ("Допустим, вы оформляете заказ на 8 мая. Мы привозим самокат 8 мая в течение дня. "
+                        "Отсчёт времени аренды начинается с момента, когда вы оплатите заказ курьеру. "
+                        "Если мы привезли самокат 8 мая в 20:30, суточная аренда закончится 9 мая в 20:30."),
+        "question4": "Только начиная с завтрашнего дня. Но скоро станем расторопнее.",
+        "question5": ("Пока что нет! Но если что-то срочное — всегда можно позвонить в поддержку по красивому номеру 1010."),
+        "question6": ("Самокат приезжает к вам с полной зарядкой. Этого хватает на восемь суток — даже если будете кататься без передышек и во сне. "
+                        "Зарядка не понадобится."),
+        "question7": ("Да, пока самокат не привезли. Штрафа не будет, объяснительной записки тоже не попросим. Все же свои."),
+        "question8": ("Да, обязательно. Всем самокатов! И Москве, и Московской области.")
     }
     
     assert answer_text == expected_texts[question_key]
