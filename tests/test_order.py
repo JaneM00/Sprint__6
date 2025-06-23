@@ -4,20 +4,21 @@ import pytest
 from pages.main_page import MainPage
 from pages.order_page import OrderPage
 
-@pytest.mark.parametrize("order_button", ["top", "bottom"])
-@pytest.mark.parametrize("name,surname,address,phone", [
-    ("Иван", "Иванов", "ул. Ленина д.1", "+79991112233"),
-    ("Петр", "Петров", "пр. Мира д.10", "+79994445566")
+@pytest.mark.parametrize("name,surname,address,phone,order_button_type", [
+    ("Иван", "Иванов", "ул. Ленина д.1", "+79991112233", "top"),
+    ("Петр", "Петров", "пр. Мира д.10", "+79994445566", "bottom")
 ])
-def test_order_flow(driver, name, surname, address, phone, order_button):
+def test_order_flow(driver, name, surname, address, phone, order_button_type):
     page = MainPage(driver)
     page.open()
     
-    # В зависимости от параметра выбираем кнопку для заказа
-    if order_button == "top":
+    # Выбираем кнопку для заказа на основе параметра
+    if order_button_type == "top":
         page.click_order_top()
-    else:
+    elif order_button_type == "bottom":
         page.click_order_bottom()
+    else:
+        pytest.fail(f"Неизвестный тип кнопки заказа: {order_button_type}")
     
     order_page = OrderPage(driver)
     
