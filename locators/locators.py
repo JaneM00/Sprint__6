@@ -25,7 +25,7 @@ class MainPageLocators:
         "question8": (By.CSS_SELECTOR, "[data-answer='question8']")
     }
     # Локатор для логотипа
-    LOGO = (By.CSS_SELECTOR, ".header-logo")  # замените на актуальный селектор
+    LOGO = (By.CSS_SELECTOR, ".header-logo")  
 
 class OrderPageLocators:
     # Локаторы для формы заказа
@@ -33,14 +33,14 @@ class OrderPageLocators:
     SURNAME_INPUT = (By.NAME, "surname")
     ADDRESS_INPUT = (By.NAME, "address")
     PHONE_INPUT = (By.NAME, "phone")
-    SUBMIT_BUTTON = (By.XPATH, "//button[contains(text(), 'Заказать')]")  # или другой актуальный селектор
+    SUBMIT_BUTTON = (By.XPATH, "//button[contains(text(), 'Заказать')]")  
 
 class MainPageHeaderLocators:
     # Локатор для кнопки заказа сверху
-    ORDER_TOP_BUTTON = (By.CSS_SELECTOR, ".Order_Button_Top")  # замените на актуальный селектор
+    ORDER_TOP_BUTTON = (By.CSS_SELECTOR, ".Order_Button_Top")  
     # Локатор для кнопки заказа снизу
-    ORDER_BOTTOM_BUTTON = (By.CSS_SELECTOR, ".Order_Button_Bottom")  # замените на актуальный селектор
+    ORDER_BOTTOM_BUTTON = (By.CSS_SELECTOR, ".Order_Button_Bottom")  
 
 class ConfirmationLocators:
     # Локатор для сообщения об успешном заказе
-    SUCCESS_MESSAGE = (By.CSS_SELECTOR, ".Order_Modal__Title")  # замените на актуальный селектор
+    SUCCESS_MESSAGE = (By.CSS_SELECTOR, ".Order_Modal__Title")  
